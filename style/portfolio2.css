@@ -1,0 +1,671 @@
+/*--------------------portfolio---------------------- */
+
+*
+{
+    padding: 0;
+    margin : 0;
+}
+body
+{
+    margin: auto;
+    width: 70%;
+    font-weight: 500;
+    font-size: 18px;
+    color: #8a8a8a;
+    background-color:#2a2a2a;
+    text-align: center;
+    
+}
+h1,h2,p
+{
+    text-align: left;
+}
+h1
+{
+    color: rgb(196, 196, 196);
+    text-transform: lowercase;
+}
+
+#headContainer {
+    width: 840px;
+    min-height: 300px;
+    /* background: rgb(105, 51, 51); */
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+#headContainer h1,.filters,p
+{
+    padding-top: 30px;
+}
+
+.filters p
+{
+    font-size: small;
+}
+
+
+h1,h2
+{
+    font-family: 'Lato', sans-serif;
+    font-size: 1.7em;
+    line-height: 1.75em;
+    font-weight: 700;
+}
+
+
+.filters li
+{
+    display:inline-block;
+    padding: 8px 5px;
+    background-color: #313131;
+    color: #999;
+    cursor: pointer;
+    border-width: 1px 1px 2px 1px;
+    border-style: solid;
+    border-color: #222;
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.6em;
+    font-weight: 700;
+    
+}
+
+.filters li:hover
+{
+    background-color:white;
+    transition: .5s;
+}
+
+
+
+#articleContainer
+{
+    width: 900px;
+    /* min-height: 500px;
+    background: #fff; */
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#articleContainer .box
+{
+    
+    position: relative;
+    width: 400px;
+    /* background: #24a84c; */
+    box-sizing: border-box;
+    display: inline-block;
+    margin: 15px;
+    cursor: pointer;
+}
+
+#articleContainer .box .boxImage
+{
+    position: relative;
+    overflow: hidden;
+}
+
+#articleContainer .box .boxImage img
+{
+    max-width: 100%;
+    transition: transform 1s;
+}
+
+#articleContainer .box:hover .boxImage img
+{
+    transform:scale(0.9);
+}
+
+
+
+#articleContainer .box .tags
+{
+    position: absolute;
+    top: 50px;
+    /* padding-right: 40px;
+    padding-top: 40px;
+    padding-bottom: 50px; */
+    opacity: 0;
+    transition: transform .7s;
+    
+}
+
+#articleContainer .box:hover .tags 
+{
+    
+    transform: translateY(50%);
+    opacity: 1;
+}
+
+
+#articleContainer .box .tags li
+{
+    display:inline-block;
+    padding: 8px 5px;
+    background-color: #313131;
+    color: #999;
+    cursor: pointer;
+    border-width: 1px 1px 2px 1px;
+    border-style: solid;
+    border-color: #222;
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.6em;
+    font-weight: 700;
+    
+}
+
+/* #articleContainer .box .tags:hover
+{
+    opacity: 1;
+    background-color:rgba(255, 255, 255, 0.3);
+} */
+
+
+
+
+
+/* -----------------------------page de contact----------------------- */
+
+
+
+.contactPage
+{
+    margin-top: 15%;
+}
+
+.reseauxContact
+{
+    margin-top: 11%;
+}
+
+.form
+{
+    position: relative;
+}
+
+.form span, button
+{
+    display:inline-block;
+    padding: 10px 35px;
+    background-color: grey;
+    color:rgb(196, 196, 196);
+    cursor: pointer;
+    border-width: 3px 4px 4px 3px;
+    border-style: solid;
+    border-color: #222;
+    border-radius: 10px;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.6em;
+    font-weight: 700;
+}
+
+
+
+/* .reseauxContact
+{
+   margin-right: 50%;
+} */
+.button
+{
+    margin-right: 50%;
+    position: absolute;
+}
+.reseauxContact span
+{
+    display:inline-block;
+    padding: 1px 20px;
+    background-color: grey;
+    color:rgb(196, 196, 196);
+    cursor: pointer;
+    border-width: 3px 4px 4px 3px;
+    border-style: solid;
+    border-color: #222;
+    border-radius: 10px;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.6em;
+    font-weight: 700;
+}
+
+.reseauxContact span:nth-child(2):hover
+{
+    background-color: #bbb6b6;
+}
+.reseauxContact span:nth-child(3):hover
+{
+    background-color: #0077b5 ;
+}
+.reseauxContact span:nth-child(4):hover
+{
+    background-color: #98d4ff;
+}
+.reseauxContact span:nth-child(5):hover
+{
+    background-color:  rgb(72, 104, 173);
+}
+
+
+/* flèche de controle droit*/
+.arrowRight {
+    display: flex;
+    flex-direction: row-reverse;
+    margin: 2%;
+    cursor: pointer;
+    right: 3%;
+    top: 45%;
+    position: fixed;
+}
+ 
+/*barre du milieu pour créer la flèche*/
+.arrowRight span
+{
+    width: 36px;
+    height: 35px;
+    padding-top: 32px;
+    padding-right: 55px;
+    background-color:transparent;
+    display: block;
+}
+
+.arrowRight span::after, .arrowRight span::before
+{
+    content: "";
+    position: absolute;
+    width: 35px;
+    height: 1.5px;
+    background-color: #7a7a7a;
+    display: block;
+    transition: 0.2s ease-in-out;
+}
+.arrowRight span::after
+{
+    
+    transform:translateY(13px) rotate(-50deg);
+}
+
+.arrowRight span::before
+{
+    transform:translateY(-13px) rotate(50deg);
+}
+
+/*animation de la flèche droite*/
+
+.arrowRight:hover span::after,.arrowRight:hover span::before
+{
+    width: 39px;
+}
+
+.arrowRight:hover span::after
+{
+    transform:translateY(16px) rotate(-55deg);
+}
+
+.arrowRight:hover span::before
+{
+    transform:translateY(-16px) rotate(55deg);
+} 
+
+/*apparition du portfolio sorti de la flèche de droite */
+.textApparition a
+{
+    opacity: 0;
+    text-decoration: none;
+    transform: translateX(15px);
+    transition: transform .3s ease-in-out;
+    color: #8a8a8a;
+    margin: auto;
+    width: 70%;
+    font-weight: 500;
+    font-size: 20px;
+    color: #8a8a8a;
+    background-color: #2a2a2a;
+    text-align: center;
+    transition: all .2s;
+
+}
+.textApparition.apparition a 
+{
+    transform: translateX(-30px);
+    transition: transform .6s ease-in-out;
+    color: #8a8a8a;
+    opacity: 1;
+    margin: auto;
+    width: 70%;
+    font-weight: 500;
+    font-size: 20px;
+    color: #8a8a8a;
+    background-color: #2a2a2a;
+    text-align: center;
+}
+.textApparition{
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+
+
+
+/* 
+fleche de gauche */
+
+.arrowLeft
+{
+
+    margin: 2%;
+    cursor: pointer;
+    position: fixed;
+    left: 3%;
+    top: 45%;
+
+}
+
+/*barre du milieu pour créer la flèche*/
+.arrowLeft span
+{
+    width: 36px;
+    height: 35px;
+    padding-top: 32px;
+    padding-right: 55px;
+    background-color:transparent;
+    display: block;
+}
+
+.arrowLeft span::after, .arrowLeft span::before
+{
+    content: "";
+    position: absolute;
+    width: 35px;
+    height: 1.5px;
+    background-color: #7a7a7a;
+    display: block;
+    transition: 0.2s ease-in-out;
+}
+.arrowLeft span::after
+{
+    
+    transform:translateY(-13px) rotate(-50deg);
+}
+
+.arrowLeft span::before
+{
+    transform:translateY(13px) rotate(50deg);
+}
+
+/*animation de la flèche*/
+
+.arrowLeft:hover span::after,.arrowLeft:hover span::before
+{
+    width: 39px;
+}
+
+.arrowLeft:hover span::after
+{
+    transform:translateY(-16px) rotate(-55deg);
+}
+
+.arrowLeft span:hover::before
+{
+    transform:translateY(16px) rotate(55deg);
+} 
+
+
+
+
+/*Creation du menu burger*/ 
+
+.burger
+{
+    
+    width: 50px;
+    height: 24px;
+    cursor: pointer;
+    position: relative;
+    z-index: 20;
+    right: 40px;
+    top: 30px;
+    
+}
+
+/* creation de la barre du milieu */
+.burger
+{
+        position: fixed;
+        top: 10%;
+        right: 10%;
+        cursor: pointer;
+        padding-top: 50px;
+        padding-right: 20px;
+        width: 100px;
+        height: 50px;
+}
+
+.burger span 
+{
+    width: 50px;
+    height: 4px;
+    background-color: #7a7a7a;
+    border-radius: 3px;
+    position: absolute;
+    
+}
+
+/*creation des barres du haut et du bas*/
+.burger span::after, .burger span::before
+{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    border-radius: 3px;
+    background-color: #7a7a7a;
+}
+
+.burger span::before
+{
+    top: 10px;
+    right: 0px;
+    transition: top 300ms 300ms ease,
+    transform 300ms ease;
+}
+
+.burger span::after
+{
+    bottom: 10px;
+    transition: bottom 300ms 300ms ease,
+    transform 300ms ease;
+    right: 0px;
+}
+
+.burger.active span
+{
+    background-color: transparent;
+}
+
+.burger.active span::before
+{
+    top: 0;
+    transform:  rotate(45deg);
+    transition: top 300ms ease, 
+    transform 300ms 300ms ease, 
+    transform 300ms 300ms ease;
+}
+
+.burger.active span::after
+{
+    bottom: 0;
+    transform:  rotate(-45deg);
+    transition: bottom 300ms ease, 
+    transform 300ms 300ms ease;
+}
+
+
+#corps
+{
+    margin: auto;
+}
+
+
+/* creation de la transition du haut vers le bas,
+overlayOpen et menuOpen qui s'ajoute aux classes avec js*/ 
+
+.overlay
+{
+    transform: translateY(-100%);
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+   background-color: #FFF;
+   transition: transform .4s ease-in-out;
+   background-color: #2a2a2a;
+}
+
+.overlayOpen
+{
+    transform: translateY(0%);
+}
+
+.menu a
+{
+    color: grey;
+    font-family: sans-serif;
+    text-align: center;
+    display: block;
+    padding-top: 50px;
+    padding-bottom: 60px;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.menu
+{
+    
+    position: fixed;
+    width: 60%;
+    z-index: 20;
+    height: 100%;
+    top: 0;
+    left: 20%;
+    background-color: #2a2a2a;
+    transform: translateY(-100%);
+    transition: transform .6s ease-in-out ;
+}
+
+.menuOpen
+{
+   transform: translateY(0);   
+}
+
+/*animation du menu*/
+.menu a:hover
+{
+    background-color: rgba(0, 0, 0, 0.281);
+}
+/* -----------------------------page index----------------------------- */
+
+.reseauxIndex
+{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    left: 0%;
+    background-color: grey;
+}
+
+.reseauxIndex li
+{
+    list-style: none;
+    display: inline-block;
+    padding: 10px 10px 10px 10px;
+    color:rgb(196, 196, 196);
+    cursor: pointer;
+    border-width: 1px 1px 1px 1px;
+    border-style: solid;
+    border-color: #222; 
+    transition: 1s ;
+    transform: translateX(0px);
+}
+.reseauxIndex:hover li:last-child
+{
+    transform: translateX(20px);
+    border: none;
+    background-color: #4868ad;
+}
+.reseauxIndex:hover li:first-child
+{
+    transform: translateX(20px);
+    border: none;
+    background-color: #bbb6b6;
+}
+.reseauxIndex:hover li:nth-child(2)
+{
+    transform: translateX(20px);
+    border: none;
+    background-color: #0077b5;
+}
+.reseauxIndex:hover li:nth-child(3)
+{
+    transform: translateX(20px);
+    border: none;
+    background-color: #98d4ff;
+}
+.reseauxIndex:hover
+{
+    background-color: transparent;
+}
+
+.indexPage
+{
+   margin-top: 20%;
+}
+
+
+
+.destroyButton span
+{
+    position: absolute;
+    bottom: 20%;
+    right: 43%;
+    display:inline-block;
+    padding: 15px 40px;
+    background-color: grey;
+    color:rgb(196, 196, 196);
+    cursor: pointer;
+    border-width: 3px 4px 4px 3px;
+    border-style: solid;
+    border-color: #222;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.6em;
+    font-weight: 700;
+}
+.destroyButton:hover span
+{
+    background-color: rgb(178, 2, 2);
+}
+
+.title
+{
+    background-color:#ddd;
+}
+.title h3
+{
+    
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 1000;
+    color: #8a8a8a;
+}
