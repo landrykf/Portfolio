@@ -103,6 +103,10 @@ h1,h2
     display: inline-block;
     margin: 15px;
     cursor: pointer;
+    /* display: none; */
+}
+.shox{
+    display: block;
 }
 
 #articleContainer .box .boxImage
@@ -347,6 +351,7 @@ h1,h2
     text-align: center;
 }
 .textApparition{
+    margin-top: 15px;
     display: flex;
     text-align: center;
     align-items: center;
@@ -435,17 +440,20 @@ fleche de gauche */
     
 }
 
+
+
 /* creation de la barre du milieu */
 .burger
 {
-        position: fixed;
-        top: 10%;
-        right: 10%;
-        cursor: pointer;
-        padding-top: 50px;
-        padding-right: 20px;
-        width: 100px;
-        height: 50px;
+    position: fixed;
+    top: 10%;
+    right: 10%;
+    cursor: pointer;
+    padding-top: 50px;
+    padding-right: 50px;
+    padding-bottom: 50px;
+    width: 100px;
+    height: 50px;
 }
 
 .burger span 
@@ -583,6 +591,7 @@ overlayOpen et menuOpen qui s'ajoute aux classes avec js*/
     flex-direction: column;
     left: 0%;
     background-color: grey;
+    top: 35%;
 }
 
 .reseauxIndex li
@@ -627,18 +636,19 @@ overlayOpen et menuOpen qui s'ajoute aux classes avec js*/
     background-color: transparent;
 }
 
-.indexPage
+/* .indexPage
 {
    margin-top: 20%;
-}
+} */
 
 
 
 .destroyButton span
 {
     position: absolute;
-    bottom: 20%;
-    right: 43%;
+    left: 50%;
+    top: 90%;
+    transform: translate(-50%, -50%);
     display:inline-block;
     padding: 15px 40px;
     background-color: grey;
