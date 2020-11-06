@@ -347,8 +347,7 @@ window.addEventListener('click',()=>{
     }
 })
 
-
-
+const textSpace = ''.split("").join(String.fromCharCode(8202))
 
 // démarrer le minuteur
 function updateCountdown() {
@@ -370,16 +369,15 @@ function updateCountdown() {
 
 function init(){ //reinitialise les paramètres du jeu
 
-    let text = 'SALUT JE SUIS LANDRY KOFFI'.split("").join(String.fromCharCode(8202))
-    console.log(String.fromCharCode(8202))
+    let text = 'SALUT JE SUIS LANDRY KOFFI'.split(" ").join(String.fromCharCode(8202))
 
-    let smallText = 'Je suis developpeur web en formation chez simplon.co.'.split("").join(String.fromCharCode(8202))
+    let smallText = 'Je suis developpeur web en formation chez simplon.co.'.split(" ").join(String.fromCharCode(8202))
 
-    let smallTextLine2 = 'J\'apprend le Javascript,le php et la qualité projet'.split("").join(String.fromCharCode(8202))
+    let smallTextLine2 = 'J\'apprend le Javascript,le php et la qualité projet'.split(" ").join(String.fromCharCode(8202))
 
-    let smallTextLine3 = 'N\'hésitez pas à consulter mes derniers projets'.split("").join(String.fromCharCode(8202))
+    let smallTextLine3 = 'N\'hésitez pas à consulter mes derniers projets'.split(" ").join(String.fromCharCode(8202))
 
-    let smallTextLine4 = 'sur la page de mon portfolio'.split("").join(String.fromCharCode(8202))
+    let smallTextLine4 = 'sur la page de mon portfolio'.split(" ").join(String.fromCharCode(8202))
 
 
     hero = new Hero(canvas.width/2,canvas.height - 69, 64, 64)
@@ -397,24 +395,24 @@ function init(){ //reinitialise les paramètres du jeu
 
 
     for (let i = 0; i < text.length; i++){
-        let positionX = 170.5;
+        let positionX = 155;
         let positionY = 250;
 
-        enemies.push( (new Enemy(text[i],positionX+i*10,positionY,ctx.measureText(text[i]).width)));
+        enemies.push( (new Enemy(text[i],positionX+i*20,positionY,ctx.measureText(text[i]).width)));
     }
 
     for (let i = 0; i < smallText.length; i++){
         let positionX = 35.5;
         let positionY = 300;
 
-        smallEnemies.push( (new SmallEnemy(smallText[i],positionX+i*7,positionY,ctx.measureText(smallText[i]).width)));
+        smallEnemies.push( (new SmallEnemy(smallText[i],positionX+i*13,positionY,ctx.measureText(smallText[i]).width)));
     }
 
     for (let i = 0; i < smallTextLine2.length; i++){
         let positionX = 25;
         let positionY = 330;
 
-        smallEnemies.push( (new SmallEnemy(smallTextLine2[i],positionX+i*7 ,positionY,ctx.measureText(smallTextLine2[i]).width)))
+        smallEnemies.push( (new SmallEnemy(smallTextLine2[i],positionX+i*13 ,positionY,ctx.measureText(smallTextLine2[i]).width)))
         // console.log(smallEnemies[i])
 
     }
@@ -423,14 +421,14 @@ function init(){ //reinitialise les paramètres du jeu
         let positionX = 75;
         let positionY = 360;
 
-        smallEnemies.push( (new SmallEnemy(smallTextLine3[i],positionX+i*7,positionY,ctx.measureText(smallTextLine3[i]).width)))
+        smallEnemies.push( (new SmallEnemy(smallTextLine3[i],positionX+i*13,positionY,ctx.measureText(smallTextLine3[i]).width)))
 
     }
 
     for (let i = 0; i < smallTextLine4.length; i++){
         let positionX = 200;
         let positionY = 390;
-        smallEnemies.push( (new SmallEnemy(smallTextLine4[i],positionX +i*7,positionY,ctx.measureText(smallTextLine4[i]).width)))
+        smallEnemies.push( (new SmallEnemy(smallTextLine4[i],positionX +i*13,positionY,ctx.measureText(smallTextLine4[i]).width)))
         // console.log(smallEnemies[i])
 
     }
@@ -507,7 +505,7 @@ function Update() {
         }
         
         for (let j = 0; j < enemies.length; j++){    
-            if ( enemies[j] !='' && bullets[i] != undefined && enemies[j] != undefined && bullets[i].y < enemies[j].y && bullets[i].x > enemies[j].x - enemies[j].width  && bullets[i].x < enemies[j].x + enemies[j].width ) {
+            if ( enemies[j] !='' && enemies[j].text !=" "  && enemies[j] != textSpace && bullets[i] != undefined && enemies[j] != undefined && bullets[i].y < enemies[j].y && bullets[i].x + bullets[i].width/2 > enemies[j].x - enemies[j].width  && bullets[i].x < enemies[j].x + enemies[j].width ) {
                 //score
                 score += 10;
                 scoreEl.innerHTML = score
@@ -534,13 +532,15 @@ function Update() {
         }
 
         for (let j = 0; j < smallEnemies.length; j++){    
-            if ( smallEnemies[j] !='' && bullets[i] != undefined && smallEnemies[j] != undefined && bullets[i].y < smallEnemies[j].y && bullets[i].x > smallEnemies[j].x - smallEnemies[j].width  && bullets[i].x < smallEnemies[j].x + smallEnemies[j].width ) {
+            if ( smallEnemies[j].text !='' && smallEnemies[j].text !=" " && bullets[i] != undefined && smallEnemies[j] != undefined && bullets[i].y < smallEnemies[j].y && bullets[i].x + bullets[i].width > smallEnemies[j].x - smallEnemies[j].width  && bullets[i].x < smallEnemies[j].x + smallEnemies[j].width ) {
                 //score
                 score += 5;
                 scoreEl.innerHTML = score
                 
                 setTimeout(() => {  //Supprimer l'enemie avec un léger retardement après la collision 
                 smallEnemies.splice(j,1);
+                console.log(smallEnemies[j].text)
+
                 }, 0);
 
                 bullets.splice(i,1);
