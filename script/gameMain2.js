@@ -21,6 +21,8 @@ let smallEnemies =[];
 let particles = [];
 let shield = [];
 
+
+
 //creation et paramètres du hero
 
 class Hero{
@@ -168,19 +170,23 @@ class Bullet{
 //creation et paramètre des enemies
 
 class Enemy{
-    constructor(text,x,y,width,height){
+    constructor(text,x,y,width,height,space){
         
         this.text = text;
         this.x = x;
         this.y = y;
         this.width = width;
         this.height= height;
-       
+        this.space= space;
 
+        
     
         this.post = function () {
             ctx.fillStyle = '#CACACA'
-            ctx.font = 'bold 20px Montserrat, sans-serif';
+            ctx.font = 'bold 24px Lato, sans-serif';
+
+            ctx.textBaseline = "middle"
+            ctx.textAlign = "center";
             let textWidth = ctx.measureText(text).width;
             ctx.fillText(this.text,this.x , this.y,textWidth);
    
@@ -203,7 +209,7 @@ class Enemy{
 
 
 class SmallEnemy{
-    constructor(text,x,y,width,height,sprite,space){
+    constructor(text,x,y,width,height){
         
         this.text = text;
         this.x = x;
@@ -215,7 +221,7 @@ class SmallEnemy{
     
         this.post = function () {
             ctx.fillStyle = '#878787'
-            ctx.font = 'bold 15px Montserrat, sans-serif';
+            ctx.font = '19px Lato, sans-serif';
             let textWidth = ctx.measureText(text).width;
             ctx.fillText(this.text,this.x , this.y,textWidth);
    
@@ -364,14 +370,17 @@ function updateCountdown() {
 
 function init(){ //reinitialise les paramètres du jeu
 
-let text = ['S','A','L','U','T','','J','E','','S','U','I','S','',"L",'A','N','D','R','Y','','K','O','F','F','I'];
-let restText = ` Je suis développeur web en formation chez simplon.co. J'apprends le javascript, le php et la qualité projets dans un environnement d'entreprise. N'hésitez pas à consulter mes derniers projets sur la page de mon portfolio.`
+    let text = 'SALUT JE SUIS LANDRY KOFFI'.split("").join(String.fromCharCode(8202))
+    console.log(String.fromCharCode(8202))
 
-let smallText =['J','e','', 's','u','i','s','', 'd','é','v','e','l','o','p','p','e','u','r','','w','e','b','', 'e','n','', 'f','o','r','m','a','t','i','o','n','', 'c','h','e','z','', 'S','i','m','p','l','o','n.','c','o.']
-let smallTextLine2 = ['J\'','a','p','p','r','e','n','d','s','', 'l','e', '' ,'j','a','v','a','s','c','r','i','p','t,','', 'l','e','', 'p','h','p','', 'e','t','', 'l','a','', 'q','u','a','l','i','t','é','', 'p','r','o','j','e','t','s']
-let smallTextLine3 =['N\'','h','é','s','i','t','e','z','', 'p','a','s','', 'à', '', 'c','o','n','s','u','l','t','e','r','', 'm','e','s','', 'd','e','r','n','i','e','r','s','', 'p','r','o','j','e','t','s']
+    let smallText = 'Je suis developpeur web en formation chez simplon.co.'.split("").join(String.fromCharCode(8202))
 
-let smallTextLine4 =['s','u','r', '', 'l','a','', 'p','a','g','e','', 'd','e','', 'm','o','n','', 'p','o','r','t','f','o','l','i','o.']
+    let smallTextLine2 = 'J\'apprend le Javascript,le php et la qualité projet'.split("").join(String.fromCharCode(8202))
+
+    let smallTextLine3 = 'N\'hésitez pas à consulter mes derniers projets'.split("").join(String.fromCharCode(8202))
+
+    let smallTextLine4 = 'sur la page de mon portfolio'.split("").join(String.fromCharCode(8202))
+
 
     hero = new Hero(canvas.width/2,canvas.height - 69, 64, 64)
     bullets = [];
@@ -384,37 +393,28 @@ let smallTextLine4 =['s','u','r', '', 'l','a','', 'p','a','g','e','', 'd','e',''
     totalScore.innerHTML = score;
     lifeEL.innerHTML = life;
     startGameButton.innerHTML = 'REJOUER' ;
-    let gap=0;
-    let gap2 = 0;
-    let gap3 = 0;
-    let gap4 =0;
+    let gap = 5
+
+
     for (let i = 0; i < text.length; i++){
         let positionX = 170.5;
         let positionY = 250;
 
-        enemies.push( (new Enemy(text[i],positionX+i*18,positionY,ctx.measureText(text[i]).width)));
+        enemies.push( (new Enemy(text[i],positionX+i*10,positionY,ctx.measureText(text[i]).width)));
     }
 
     for (let i = 0; i < smallText.length; i++){
         let positionX = 35.5;
         let positionY = 300;
-        if (smallText[i]=='i' || smallText[i]=='l'|| smallText[i]==''||smallText[i]=='o'||smallText[i]=='m'|| smallText[i]=='s') {
-        gap += 10
-        }else{
-         gap +=16
-        }
-        smallEnemies.push( (new SmallEnemy(smallText[i],positionX +=gap,positionY,ctx.measureText(smallText[i]).width)));
+
+        smallEnemies.push( (new SmallEnemy(smallText[i],positionX+i*7,positionY,ctx.measureText(smallText[i]).width)));
     }
 
     for (let i = 0; i < smallTextLine2.length; i++){
         let positionX = 25;
         let positionY = 330;
-        if (smallTextLine2[i]=='i' || smallTextLine2[i]=='l'|| smallTextLine2[i]==''||smallTextLine2[i]=='o'||smallTextLine2[i]=='m'|| smallTextLine2[i]=='s') {
-            gap2 += 10
-        }else{
-            gap2 +=16
-        }
-        smallEnemies.push( (new SmallEnemy(smallTextLine2[i],positionX +=gap2,positionY,ctx.measureText(smallTextLine2[i]).width)))
+
+        smallEnemies.push( (new SmallEnemy(smallTextLine2[i],positionX+i*7 ,positionY,ctx.measureText(smallTextLine2[i]).width)))
         // console.log(smallEnemies[i])
 
     }
@@ -422,25 +422,15 @@ let smallTextLine4 =['s','u','r', '', 'l','a','', 'p','a','g','e','', 'd','e',''
     for (let i = 0; i < smallTextLine3.length; i++){
         let positionX = 75;
         let positionY = 360;
-        if (smallTextLine3[i]=='i' || smallTextLine3[i]=='l'|| smallTextLine3[i]==''||smallTextLine3[i]=='o'||smallTextLine3[i]=='m'|| smallTextLine3[i]=='s') {
-            gap3 += 10
-        }else{
-            gap3 +=16
-        }
-        smallEnemies.push( (new SmallEnemy(smallTextLine3[i],positionX +=gap3,positionY,ctx.measureText(smallTextLine3[i]).width)))
-        // console.log(smallEnemies[i])
+
+        smallEnemies.push( (new SmallEnemy(smallTextLine3[i],positionX+i*7,positionY,ctx.measureText(smallTextLine3[i]).width)))
 
     }
 
     for (let i = 0; i < smallTextLine4.length; i++){
         let positionX = 200;
         let positionY = 390;
-        if (smallTextLine4[i]=='i' || smallTextLine4[i]=='l'|| smallTextLine4[i]==''|| smallTextLine4[i]=='s') {
-            gap4 += 10
-        }else{
-            gap4 +=16
-        }
-        smallEnemies.push( (new SmallEnemy(smallTextLine4[i],positionX +=gap4,positionY,ctx.measureText(smallTextLine4[i]).width)))
+        smallEnemies.push( (new SmallEnemy(smallTextLine4[i],positionX +i*7,positionY,ctx.measureText(smallTextLine4[i]).width)))
         // console.log(smallEnemies[i])
 
     }
@@ -594,6 +584,7 @@ scoreboard.style.display = 'none';
 
 destroyButton.addEventListener('click',() =>{
     requestAnimationFrame(Update);
+    updateCountdown();
     destroyButton.style.display = 'none';
     scoreboard.style.display = 'block';
 
