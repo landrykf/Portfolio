@@ -3,105 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script defer src="/script/transition.js"></script> -->
+    <link rel="stylesheet" href="/style/transition.css">
     <link rel="stylesheet" href="/style/portfolio2.css">
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style/gameStyle.css">
-    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet"> 
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style/gameStyle.css">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet"> 
+
     <title>A Propos</title>
 </head>
-<body id="headContainer">
-    <div class="indexPage">
+<body data-barba ="wrapper"  id="headContainer">
 
-        <header>
-            <!-- <div>
-                <h1>hello my name is landry koffi</h1>
-                <p>
-                    Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant
-                    impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un
-                    imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices
-                </p>
-            </div> -->
-                
 
-                <div id="scoreboard" class="fixed">
-                    <div><span>Score:</span><span id="scoreEl">0</span></div>
-                    <div><span>Life:</span><span id="lifeEl">10</span></div>
-                    <div id="timer"></div>
-                </div>
-                <div id="startScorboard" class="fixed inset-0 flex items-center justify-center">
-                    <div class="bg-white max-w-md w-full p-6 text-center">
-                        <h1 id="totalScore" class="text-4xl font-bold leading-none">0</h1>
-                        <p class="text-sm text-gray-700 mb-4">Points</p>
-                        <div>
-                            <button id="startGameButton" class="bg-blue-5OO text-black w-full py-3 rounded-full">JOUER</button>
-                        </div>
-                    </div>
-                </div>
+<div class="wipe-transition"></div>
+<!-- navigation -->
 
+
+
+    <main data-barba="container" data-barba-namespace="home">
+        <div>
+
+
+
+
+            <div class="arrowRight" onclick="location.href='/portfolio.html'">
+                <a href="/portfolio.html">
+                <span></span>
+                </a>
+        
+                <div class="textApparition index">
+                    <a href="/portfolio.html">portfolio</a>
+                </div>    
+
+            </div>
             
-
             <div class= "burger">
-                    <span></span>
+                <span></span>
             </div >
-
             <nav class="menu">
                 <a href="/index.html">A propos</a>
                 <a href="/portfolio.html">portfolio</a>
                 <a href="/contact.html">contact</a>
             </nav>
             <div class=overlay></div>
-    
-            
-        </header>
-        <section>
 
-            
-            <div class="arrowRight">
-                <a href="/portfolio.html">
-                <span></span>
-                </a>
+            <header>
+                    
+    
+                    <div id="scoreboard" class="fixed">
+                        <div><span>Score:</span><span id="scoreEl">0</span></div>
+                        <div><span>Life:</span><span id="lifeEl">10</span></div>
+                        <div id="timer"></div>
+                    </div>
+                    <div id="startScorboard" class="fixed inset-0 flex items-center justify-center">
+                        <div class="bg-white max-w-md w-full p-6 text-center">
+                            <h1 id="totalScore" class="text-4xl font-bold leading-none">0</h1>
+                            <p class="text-sm text-gray-700 mb-4">Points</p>
+                            <div>
+                                <button id="startGameButton" class="bg-blue-5OO text-black w-full py-3 rounded-full">JOUER</button>
+                            </div>
+                        </div>
+                    </div>
+    
+                
+    
+
         
-                <div class="textApparition">
-                    <a href="/portfolio.html">portfolio</a>
-                </div>    
+                
+            </header>
+            <section>
     
-            </div>
-
-
     
-    </section>
-    <section>
-
-        <ul class="reseauxIndex">
-            
-            <li>
-                <a href="http://github.com"><img src="/imagesPortfolio/reseaux/github.png" alt="twitter"></a>
-            </li>
-            <li>
-                <a href="http://linkedin.com"><img src="/imagesPortfolio/reseaux/linkedin.png" alt="linkedin"></a>
-            </li>
-            <li>
-                <a href="http://twitter.com"><img src="/imagesPortfolio/reseaux/twitter.png" alt="twitter"></a>
-            </li>
-            <li>
-                <a href="http://facebook.com"><img src="/imagesPortfolio/reseaux/facebook.png" alt="twitter"></a>
-            </li>
-
-        </ul>
-    </section>
-   
-    </div>
-  
-    <img class="hero" src="/gameMedias/hero.png" alt="image du hero">
-    <canvas id ="myCanvas"></canvas>
-    <div class="destroyButton"> 
-        <span>destroy this web page</span>
-    </div>
+    
+        
+        </section>
+        <section>
+    
+            <ul class="reseauxIndex">
+                
+                <li>
+                    <a href="http://github.com"><img src="/medias/imagesPortfolio/github.png" alt="github"></a>
+                </li>
+                <li>
+                    <a href="http://linkedin.com"><img src="/medias/imagesPortfolio/linkedin.png" alt="linkedin"></a>
+                </li>
+                <li>
+                    <a href="http://twitter.com"><img src="/medias/imagesPortfolio/twitter.png" alt="twitter"></a>
+                </li>
+                <li>
+                    <a href="http://facebook.com"><img src="/medias/imagesPortfolio/facebook.png" alt="facebook"></a>
+                </li>
+    
+            </ul>
+        </section>
+       
+        </div>
+      
+        <img class="hero" src="/gameMedias/hero.png" alt="image du hero">
+        <canvas id ="myCanvas"></canvas>
+        <div class="destroyButton"> 
+            <span>destroy this web page</span>
+        </div>
+    </main>
+        
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.1/gsap.min.js"></script>
+    <script src="https://unpkg.com/@barba/core"></script> -->
+    <script src="/node_modules/howler/dist/howler.js"></script>
     <script src="script/gameMain2.js"></script>
     <script src="script/main.js"></script>
-
+    <!-- <script src="/path/to/howler.js"></script> -->
+  
 </body>
 
 </html>

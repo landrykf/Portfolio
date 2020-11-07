@@ -1,4 +1,5 @@
 //declaration variables utiles
+
 let canvas = document.getElementById('myCanvas');
 let ctx = canvas.getContext('2d');
 canvas.height = 700;
@@ -21,9 +22,48 @@ let smallEnemies =[];
 let particles = [];
 let shield = [];
 
+//------------------------------Gestion du son----------------------------- 
+
+let shootSound = new Howl({
+    src: ['/medias/Audio/shoot.mp3'],
+    sprite: {
+      shoot: [2, 1000],
+      raffle: [13000, 1400],
+      winner: [10000, 50000]
+    },
+    volume : 0.5
+});
+
+let impactSound = new Howl({
+    src: ['/medias/Audio/explosion.mp3'],
+    sprite: {
+      impact: [0, 2000],
+    },
+    volume:0.3
+});
+
+let dammageSound = new Howl({
+    src: ['/medias/Audio/degat.mp3'],
+    sprite: {
+      dammage: [0, 1000],
+    },
+    volume: 0.2
+});
+
+let wallCollideSound = new Howl({
+    src: ['/medias/Audio/wall_collide.mp3'],
+    sprite: {
+      collide: [500, 2000],
+    },
+    volume: 1  
+});
+
+//-----------------------------------------------------------------------
 
 
-//creation et paramètres du hero
+
+
+//-------------------creation et paramètres du hero---------------------
 
 class Hero{
     constructor(x, y, width, height, color){
@@ -86,7 +126,7 @@ class Hero{
 
 }
 
-//Création et paramètres du bouclier
+//-----------------------Création et paramètres du bouclier------------------
 
 class Shield{
     constructor(x,y,radius,color,velocity){
@@ -267,6 +307,7 @@ class Particle{
         this.move = function(){
             if (this.radius >=3) {
                 if(this.y + this.velocity.y < this.radius){
+                    wallCollideSound.play('collide')
                     this.velocity.y = - this.velocity.y
                 }
                 if(this.x + this.velocity.x > canvas.width - this.radius || this.x + this.velocity.x < this.radius){
@@ -292,62 +333,66 @@ class Particle{
 }
 
 
+function keyManage() {
+    //déplacement au clavier et tir de projectiles au clavier
+    // affectation des touches du clavier
 
+    window.addEventListener('keyup', function(event){
+        switch(event.keyCode ){
+            case 39:
+                pressed.right = false;
+                break;
 
-//déplacement au clavier et tir de projectiles au clavier
-// affectation des touches du clavier
+            case 37:
+                pressed.left = false;
+                break;
+            
+            case 68:
+                pressed.shield = true;
+                break
+        }
+    })
 
-window.addEventListener('keyup', function(event){
-    switch(event.keyCode ){
-        case 39:
-            pressed.right = false;
-            break;
+    window.addEventListener('keydown', function(event){
+        switch(event.keyCode ){
+            case 39:
+                pressed.right = true;
+                break;
 
-        case 37:
-            pressed.left = false;
-            break;
+            case 37:
+                pressed.left = true;
+                break;
+
+            case 68:
+                pressed.shield = true;
+                if(shield.length < 1 ){
+                    shield.push(new Shield(hero.x + hero.width/2, hero.y + hero.height/2, 2,'red', 2));
+                } 
+                break;
+
+            case 32: 
+                if(bullets.length<8){
+                    bullets.push(new Bullet(hero.x+hero.width/2-10, hero.y, 20, 20, false, true));
+                    shootSound.play('shoot') 
+
+                }
+        }
         
-        case 68:
-            pressed.shield = false;
-            break
-    }
-})
-
-window.addEventListener('keydown', function(event){
-    switch(event.keyCode ){
-        case 39:
-            pressed.right = true;
-            break;
-
-        case 37:
-            pressed.left = true;
-            break;
-
-        case 68:
-            pressed.shield = true;
-            if(shield.length < 1 ){
-                shield.push(new Shield(hero.x + hero.width/2, hero.y + hero.height/2, 2,'red', 2));
-            } 
-            break;
-
-        case 32: 
-            if(bullets.length<8){
-                bullets.push(new Bullet(hero.x+hero.width/2-10, hero.y, 20, 20, false, true));
-            }
-    }
-    
-})
+    })
 
 
-//tir de projectiles au click
+    //tir de projectiles au click
 
-window.addEventListener('click',()=>{
-    if(bullets.length<8){
-        bullets.push(new Bullet(hero.x+hero.width/2-10, hero.y, 20, 20, false, true));
-    }
-})
+    window.addEventListener('click',()=>{
+        if(bullets.length<8){
+            shootSound.play('shoot') 
 
-const textSpace = ''.split("").join(String.fromCharCode(8202))
+            bullets.push(new Bullet(hero.x+hero.width/2-10, hero.y, 20, 20, false, true));
+        }
+    })
+}
+
+
 
 // démarrer le minuteur
 function updateCountdown() {
@@ -391,8 +436,7 @@ function init(){ //reinitialise les paramètres du jeu
     totalScore.innerHTML = score;
     lifeEL.innerHTML = life;
     startGameButton.innerHTML = 'REJOUER' ;
-    let gap = 5
-
+ 
 
     for (let i = 0; i < text.length; i++){
         let positionX = 155;
@@ -402,14 +446,14 @@ function init(){ //reinitialise les paramètres du jeu
     }
 
     for (let i = 0; i < smallText.length; i++){
-        let positionX = 35.5;
+        let positionX = 70;
         let positionY = 300;
 
         smallEnemies.push( (new SmallEnemy(smallText[i],positionX+i*13,positionY,ctx.measureText(smallText[i]).width)));
     }
 
     for (let i = 0; i < smallTextLine2.length; i++){
-        let positionX = 25;
+        let positionX = 75;
         let positionY = 330;
 
         smallEnemies.push( (new SmallEnemy(smallTextLine2[i],positionX+i*13 ,positionY,ctx.measureText(smallTextLine2[i]).width)))
@@ -418,7 +462,7 @@ function init(){ //reinitialise les paramètres du jeu
     }
 
     for (let i = 0; i < smallTextLine3.length; i++){
-        let positionX = 75;
+        let positionX = 105;
         let positionY = 360;
 
         smallEnemies.push( (new SmallEnemy(smallTextLine3[i],positionX+i*13,positionY,ctx.measureText(smallTextLine3[i]).width)))
@@ -426,7 +470,7 @@ function init(){ //reinitialise les paramètres du jeu
     }
 
     for (let i = 0; i < smallTextLine4.length; i++){
-        let positionX = 200;
+        let positionX = 220;
         let positionY = 390;
         smallEnemies.push( (new SmallEnemy(smallTextLine4[i],positionX +i*13,positionY,ctx.measureText(smallTextLine4[i]).width)))
         // console.log(smallEnemies[i])
@@ -470,6 +514,8 @@ function Update() {
         }
 
         if (collides(particles[a],hero)) { //Dégats héros et Fin du jeu
+            dammageSound.play('dammage') 
+
             particles.splice(a,1);
             life -= 1
             lifeEL.innerHTML = life;
@@ -505,7 +551,7 @@ function Update() {
         }
         
         for (let j = 0; j < enemies.length; j++){    
-            if ( enemies[j] !='' && enemies[j].text !=" "  && enemies[j] != textSpace && bullets[i] != undefined && enemies[j] != undefined && bullets[i].y < enemies[j].y && bullets[i].x + bullets[i].width/2 > enemies[j].x - enemies[j].width  && bullets[i].x < enemies[j].x + enemies[j].width ) {
+            if ( enemies[j] !='' && enemies[j].text !=" " && bullets[i] != undefined && enemies[j] != undefined && bullets[i].y < enemies[j].y && bullets[i].x + bullets[i].width/2 > enemies[j].x - enemies[j].width  && bullets[i].x < enemies[j].x + enemies[j].width ) {
                 //score
                 score += 10;
                 scoreEl.innerHTML = score
@@ -519,6 +565,8 @@ function Update() {
                 //déployer les particules a la collision Balle/Lettre
                 for (let i = 0; i < 5; i++) {
                     if (enemies[j] != undefined) {
+                    impactSound.play('impact') 
+
                         particles.push(new Particle(enemies[j].x, enemies[j].y, 3 , 'red',{x:Math.random() *3,
                             y: Math.random() *-4})) 
                           
@@ -548,6 +596,7 @@ function Update() {
                 //déployer les particules a la collision Balle/Lettre
                 for (let i = 0; i < 2; i++) {
                     if (smallEnemies[j] != undefined) {
+                        // impactSound.play('impact') 
                         particles.push(new Particle(smallEnemies[j].x, smallEnemies[j].y ,Math.floor(Math.random() *3)  , '#FFFFFF',{x:Math.random()*2.5  ,
                             y: Math.random()*3  })) 
                           
@@ -583,6 +632,7 @@ init();
 scoreboard.style.display = 'none';
 
 destroyButton.addEventListener('click',() =>{
+    keyManage()
     requestAnimationFrame(Update);
     updateCountdown();
     destroyButton.style.display = 'none';
@@ -593,6 +643,7 @@ destroyButton.addEventListener('click',() =>{
  
 startGameButton.addEventListener('click',()=>{
     shield = []
+    keyManage()
     init();
     updateCountdown();
     requestAnimationFrame(Update);
