@@ -15,6 +15,7 @@ const startScorboard = document.querySelector('#startScorboard');
 const totalScore = document.querySelector('#totalScore');
 const destroyButton = document.querySelector('.destroyButton'); 
 const scoreboard = document.querySelector('#scoreboard');
+const progressBarEl = document.querySelector('#progressBar div')
 
 let bullets = [];
 let enemies=[];  
@@ -31,7 +32,7 @@ let shootSound = new Howl({
       raffle: [13000, 1400],
       winner: [10000, 50000]
     },
-    volume : 0.5
+    volume : 0.3
 });
 
 let impactSound = new Howl({
@@ -401,10 +402,10 @@ function updateCountdown() {
     document.getElementById("timer").innerHTML = sec+'s';
     sec--;
          
-    if(sec < 0){
+    if(sec < 0 ){
         clearInterval(startTimer)
         startScorboard.style.display = 'flex';
-        totalScore.innerHTML = score;
+        totalScore.innerHTML = score + ' Points';
         cancelAnimationFrame(animationId);
     }
     }, 1000);
@@ -432,6 +433,9 @@ function init(){ //reinitialise les paramètres du jeu
     particles = [];
     score = 0;
     life = 10;
+    progresBarPercent = 100;
+    progressBarEl.style.width = progresBarPercent+'%';
+
     scoreEl.innerHTML = score;
     totalScore.innerHTML = score;
     lifeEL.innerHTML = life;
@@ -514,15 +518,21 @@ function Update() {
         }
 
         if (collides(particles[a],hero)) { //Dégats héros et Fin du jeu
-            dammageSound.play('dammage') 
+            // dammageSound.play('dammage') 
 
             particles.splice(a,1);
+
+            progresBarPercent -= 10;
+            progressBarEl.style.width = progresBarPercent +'%';
+
+            console.log(progressBarEl.style.width)
+
             life -= 1
             lifeEL.innerHTML = life;
             hero.color()
             if (life == 0) {
                 startScorboard.style.display = 'flex';
-                totalScore.innerHTML = score;
+                totalScore.innerHTML = score + ' Points';
                 cancelAnimationFrame(animationId);
                 // clearInterval(startTimer)
             }
@@ -581,13 +591,16 @@ function Update() {
 
         for (let j = 0; j < smallEnemies.length; j++){    
             if ( smallEnemies[j].text !='' && smallEnemies[j].text !=" " && bullets[i] != undefined && smallEnemies[j] != undefined && bullets[i].y < smallEnemies[j].y && bullets[i].x + bullets[i].width > smallEnemies[j].x - smallEnemies[j].width  && bullets[i].x < smallEnemies[j].x + smallEnemies[j].width ) {
+                
+                dammageSound.play('dammage') 
+
                 //score
                 score += 5;
                 scoreEl.innerHTML = score
                 
                 setTimeout(() => {  //Supprimer l'enemie avec un léger retardement après la collision 
                 smallEnemies.splice(j,1);
-                console.log(smallEnemies[j].text)
+                // console.log(smallEnemies[j].text)
 
                 }, 0);
 
