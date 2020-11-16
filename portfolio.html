@@ -3,209 +3,199 @@
 
 <head>
     <meta charset="UTF-8">
+
     <link rel="stylesheet" href="/style/portfolio2.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style/gameStyle.css">
+    <link rel="stylesheet" href="/style/effect.css">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
+
+
 <body>
 
 
-    <header>
+    <main data-barba="container" data-barba-namespace="home">
+        <header>
 
-        <div id="headContainer">
-            <h1>PORTFOLIO APPRENTI DEVELOPPEUR WEB</h1>
-            <P>
-                Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant
-                impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un
-                imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de
-                texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique,
-                sans que son contenu n'en soit modifié.
-            </P>
-            <div class="filters">
-                <li title="filtrer par tout afficher">
 
-                    <span class="filter" onclick="ProjectFiter('all')">afficher tout</span>
-
-                </li>
-
-                <li title="filtrer par techno 1">
-                    <span class="filter" onclick="ProjectFiter('techno1')">techno 1</span>
-                </li>
-
-                <li title="filtrer par techno 2">
-                    <span class="filter">techno 2</span>
-                </li>
-
-                <li title="filtrer par techno 3">
-                    <span class="filter">techno 3</span>
-                </li>
-
-                <li title="filtrer par techno 4">
-                    <span class="filter">techno 4</span>
-                </li>
-
-                <li title="filtrer par techno 5">
-                    <span class="filter">techno 5</span>
-                </li>
-
-                <p>
-                    affichage des projets, utiliser le filtre pour les classer par technologie utilisé
-                </p>
+            <div class="arrowRight" onclick="location.href='/contact.html'">
+                <a href="/contact.html">
+                    <span></span>
+                </a>
+                <div class="textApparition">
+                    <a href="/contact.html">contact</a>
+                </div>
 
             </div>
-            
-            <div class= "burger">
+
+            <div class="arrowLeft" onclick="location.href='/index.html'">
+                <a href="/index.html">
+                    <span></span>
+                </a>
+                <div class="textApparitionLeft left">
+                    <a href="/index.html"> A propos</a>
+                </div>
+            </div>
+
+            <div class="burger">
                 <span></span>
-            </div >
-        </div>
+            </div>
+            <nav class="menu">
+                <a class="btn from-left" href="/index.html">A propos</a>
+                <a class="btn from-top" href="/portfolio.html">portfolio</a>
+                <a class="btn from-right" href="/contact.html">contact</a>
+            </nav>
+            <div class=overlay></div>
 
-    </header>
+            <div id="headContainer">
+                <h1>PORTFOLIO APPRENTI DEVELOPPEUR WEB</h1>
+                <P>
+                    Découvrez mes derniers projets de développement web.
+                </P>
+                <div class="filters">
+                    <li class="filterButton" onclick="projectFilter('all')" title="filtrer par tout afficher">
+
+                        <span>afficher tout</span>
+
+                    </li>
+
+                    <li class="filterButton" onclick="projectFilter('html5')" title="filtrer par techno 1">
+                        <span>Html 5</span>
+                    </li>
+
+                    <li class="filterButton" onclick="projectFilter('javascript')" title="filtrer par techno 2">
+                        <span>javascript</span>
+                    </li>
+
+                    <li class="filterButton" onclick="projectFilter('sass')" title="filtrer par techno 3">
+                        <span>Sass</span>
+                    </li>
+
+                    <li class="filterButton" onclick="projectFilter('php')" title="filtrer par techno 4">
+                        <span>Php</span>
+                    </li>
+
+                    <li class="filterButton" onclick="projectFilter('react')" title="filtrer par techno 5">
+                        <span>React</span>
+                    </li>
+
+                    <p>
+                        affichage des projets, utiliser le filtre pour les classer par technologie utilisé
+                    </p>
+
+                </div>
 
 
-    
+            </div>
+
+        </header>
+
+
+        <h2 class="projectTitle">Projet perso</h2>
         <div id="articleContainer">
-            <div class="box">
+            <div class="box html5 css javascript">
                 <div class="title">
-                    <h3>Projet 1</h3>
+                    <h3>Portfolio</h3>
                 </div>
                 <div class="boxImage techno1">
-                    <img src="imagesPortfolio/projet3Simba.jpg" alt="image projet 1">
+                    <img src="/medias/imagesPortfolio/projet1.png" alt="image projet 1">
                 </div>
                 <div class="tags">
                     <ul class="techno">
-                        <li>techno1</li>
-                        <li>techno 2</li>
-                        <li>techno 3</li>
-                        <li>techno 4</li>
-                        <li>techno 5</li>
-                        <li>techno 6</li>
+                        <li class="project1">html</li>
+                        <li class="project1">Css</li>
+                        <li class="project1">javaScript</li>
                     </ul>
                 </div>
             </div>
-            <div class="box">
+            <div class="box html5 javascript">
                 <div class="title">
-                    <h3>Projet 2</h3>
+                    <h3>JS-space-breaker</h3>
                 </div>
-            
+
                 <div class="boxImage">
-                    <img src="imagesPortfolio/projet3Simba.jpg" alt="image projet 1">
+                    <img src="medias/imagesPortfolio/projet2.png" alt="image projet 1">
                 </div>
                 <div class="tags">
-                    <ul>
-                        <li>techno 1</li>
-                        <li>techno 2</li>
-                        <li>techno 3</li>
-                        <li>techno 4</li>
-                        <li>techno 5</li>
-                        <li>techno 6</li>
+                    <ul class="techno">
+                        <li class="project2">html5</li>
+                        <li class="project2">javaScript</li>
                     </ul>
                 </div>
-            </div>
-                    <div class="box">
-                        <div class="title">
-                    <h3>Projet 3</h3>
-                </div>
-                <div class="boxImage">
-                    <img src="imagesPortfolio/projet3Simba.jpg" alt="image projet 1">
-                </div>
-                <div class="tags">
-                    <ul>
-                        <li>techno 1</li>
-                        <li>techno 2</li>
-                        <li>techno 3</li>
-                        <li>techno 4</li>
-                        <li>techno 5</li>
-                        <li>techno 6</li>
-                    </ul>
-                </div>
-            </div>
-                    <div class="box">
-                        <div class="title">
-                    <h3>Projet 4</h3>
-                </div>
-                <div class="boxImage">
-                    <img src="imagesPortfolio/projet3Simba.jpg" alt="image projet 1">
-                </div>
-                <div class="tags">
-                    <ul>
-                        <li>techno 1</li>
-                        <li>techno 2</li>
-                        <li>techno 3</li>
-                        <li>techno 4</li>
-                        <li>techno 5</li>
-                        <li>techno 6</li>
-                    </ul>
-                </div>
-            </div>
-                    <div class="box">
-                        <div class="title">
-                    <h3>Projet 5</h3>
-                </div>
-                <div class="boxImage">
-                    <img src="imagesPortfolio/projet3Simba.jpg" alt="image projet 1">
-                </div>
-                <div class="tags">
-                    <ul>
-                        <!-- <li>techno 1</li> -->
-                        <li>techno 2</li>
-                        <li>techno 3</li>
-                        <li>techno 4</li>
-                        <li>techno 5</li>
-                        <li>techno 6</li>
-                    </ul>
-                </div>
-            </div>
-                    <div class="box">
-                        <div class="title">
-                    <h3>Projet 6</h3>
-                </div>
-                <div class="boxImage">
-                    <img src="imagesPortfolio/projet3Simba.jpg" alt="image projet 1">
-                </div>
-                <div class="tags">
-                    <ul>
-                        <!-- <li>techno 1</li> -->
-                        <li>techno 2</li>
-                        <li>techno 3</li>
-                        <li>techno 4</li>
-                        <li>techno 5</li>
-                        <li>techno 6</li>
-                    </ul>
-                </div>
+
             </div>
 
-            <div class="arrowRight">
-                <a href="/contact.html">
-                <span></span>
-                </a>
-        
-                <div class="textApparition">
-                    <a href="/contact.html">portfolio</a>
-                </div>    
-    
+            <h2 class="projectTitle">Projets professionnel/Formation</h2>
+
+            <div id="articleContainer">
+                <div class="box php javascript">
+                    <div class="title">
+                        <h3>Projet 1</h3>
+                    </div>
+                    <div class="boxImage techno1">
+                        <img src="medias/imagesPortfolio/attente.png" alt="image projet 1">
+                    </div>
+                    <div class="tags">
+                        <ul class="techno">
+                            <li class="project1">html</li>
+                            <li class="project1">Css</li>
+                            <li class="project1">javaScript</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="box nodejs react">
+                    <div class="title">
+                        <h3>Projet 2</h3>
+                    </div>
+
+                    <div class="boxImage">
+                        <img src="medias/imagesPortfolio/attente.png" alt="image projet 1">
+                    </div>
+                    <div class="tags">
+                        <ul class="techno">
+                            <li class="project2">html5</li>
+                            <li class="project2">javaScript</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="title">
+                        <h3>Projet 3</h3>
+                    </div>
+                    <div class="boxImage">
+                        <img src="medias/imagesPortfolio/attente.png" alt="image projet 1">
+                    </div>
+                    <div class="tags">
+                        <ul class="techno">
+                            <li>techno 1</li>
+                            <li>techno 2</li>
+                            <li>techno 3</li>
+                            <li>techno 4</li>
+                            <li>techno 5</li>
+                            <li>techno 6</li>
+                        </ul>
+                    </div>
+                </div>
+
+
+
+
             </div>
 
-            <div class="arrowLeft">
-                <a href="/index.html">
-                <span></span>
-                </a>
-                <div class="textApparition">
-                    <a href="/contact.html">portfolio</a>
-                </div>
-            </div>
+
+
             <footer>
                 <h3>Lorem, ipsum dolor</h3>
                 <p>
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis, consequuntur.
                 </p>
             </footer>
-        </div>
-    
-   
-
+    </main>
 
 
 <script src="script/main.js"></script>
