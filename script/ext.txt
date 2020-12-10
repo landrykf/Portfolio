@@ -1,0 +1,13 @@
+    // computed: {
+    //     filteredProject(){
+    //         let techno = this.selectedTechno;
+
+    //         if(techno == "All"){
+    //             return this.projects
+    //         } else{
+    //             return this.technos.filter(function(project){
+    //                 return project.techno === techno
+    //             });
+    //         }
+    //     }
+    // }

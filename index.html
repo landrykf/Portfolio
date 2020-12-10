@@ -15,47 +15,65 @@
     <title>A Propos</title>
 </head>
 
-<body data-barba="wrapper" id="headContainer">
-
+<body>
 
     <!-- navigation -->
 
+    <main id="app">
+        <nav>
 
+            <router-link to='/portfolio'>
 
-    <main data-barba="container" data-barba-namespace="home">
-        <div>
+                <div class="arrowRight">
+                    <a href="/portfolio.html">
+                        <span></span>
+                    </a>
 
-
-
-
-            <div class="arrowRight" onclick="location.href='/portfolio.html'">
-                <a href="/portfolio.html">
-                    <span></span>
-                </a>
-
-                <div class="textApparition index">
-                    <a href="/portfolio.html">portfolio</a>
+                    <div class="textApparition index">
+                        <a>portfolio</a>
+                    </div>
                 </div>
-
-            </div>
+            </router-link>
 
             <div class="burger">
                 <span></span>
             </div>
-            <nav class="menu">
-                <a class="btn from-left" href="/index.html">A propos</a>
-                <a class="btn from-top" href="/portfolio.html">portfolio</a>
-                <a class="btn from-right" href="/contact.html">contact</a>
-            </nav>
-            <div class=overlay></div>
 
+            <div class="menu">
+                <router-link to='/'>
+                    <a class="btn from-left">A propos</a>
+                </router-link>
+                <router-link to='/portfolio'>
+                    <a class="btn from-top" href="/portfolio.html">portfolio</a>
+                </router-link>
+
+                <router-link to='/contact'>
+                    <a class="btn from-right" href="/contact.html">contact</a>
+                </router-link>
+
+            </div>
+
+            <div class=overlay></div>
+        </nav>
+        <router-view></router-view>
+    </main>
+
+    <!-- About -->
+
+    <script type="text/x-template" id="home">
+        <!-- <script src="/script/JSspace-breaker"></script> -->
+    <!-- <script src="script/JSspace-breaker.js"></script> -->
+
+
+        <div>
             <header>
 
-
                 <div id="scoreboard" class="fixed">
+    
                     <div id="progressBar">
                         <div></div>
                     </div>
+                    
                     <div id="score"><span id="scoreEl">0</span><span>Points</span></div>
                     <div class="life"><span>Life:</span><span id="lifeEl">10</span></div>
                     <div id="timer"><span>Os</span></div>
@@ -70,54 +88,209 @@
                         </div>
                     </div>
                 </div>
-
-
-
-
-
-
+    
             </header>
-            <section>
+    
+            <div>
+                <section>
+                    <ul class="reseauxIndex">
+                        <li v-for= "reseau in reseaux">
+                            <a v-bind:href="reseau.link"></a> <img v-bind:src="reseau.img" :alt= "reseau.alt" >
+                        </li>
+                    </ul>
+                </section>
+            </div>
+    
+    
+            <img class="hero" src="/gameMedias/hero.png" alt="image du hero">
+            <canvas id="myCanvas"></canvas>
+            <div class="destroyButton">
+                <span class="btn from-center">destroy this web page</span>
+            </div>
 
-
-
-
-            </section>
-            <section>
-
-                <ul class="reseauxIndex">
-
-                    <li>
-                        <a href="http://github.com"><img src="/medias/imagesPortfolio/github.png" alt="github"></a>
-                    </li>
-                    <li>
-                        <a href="http://linkedin.com"><img src="/medias/imagesPortfolio/linkedin.png"
-                                alt="linkedin"></a>
-                    </li>
-                    <li>
-                        <a href="http://twitter.com"><img src="/medias/imagesPortfolio/twitter.png" alt="twitter"></a>
-                    </li>
-                    <li>
-                        <a href="http://facebook.com"><img src="/medias/imagesPortfolio/facebook.png"
-                                alt="facebook"></a>
-                    </li>
-
-                </ul>
-            </section>
+            <!-- <script type="application/javascript" defer src="script/JSspace-breaker.js"></script> -->
 
         </div>
+    </script>
 
-        <img class="hero" src="/gameMedias/hero.png" alt="image du hero">
-        <canvas id="myCanvas"></canvas>
-        <div class="destroyButton">
-            <span class="btn from-center">destroy this web page</span>
+
+    <!-- portfolio -->
+
+
+
+    <script type="text/x-template" id="portfolio">
+
+        <div>
+            <header>
+
+                <div id="headContainer">
+                    <h1>PORTFOLIO APPRENTI DEVELOPPEUR WEB</h1>
+                    <P>
+                        Découvrez mes derniers projets de développement web.
+                    </P>
+                    <div class="filters">
+
+                        <li class="filterButton" onclick="projectFilter('all')" title="Tout Afficher">
+                            <span>tout Afficher</span>
+                        </li>
+    
+                        <li class="filterButton" onclick="projectFilter('js')" title="filtrer par javascript">
+                            <span>javascript</span>
+                        </li>
+    
+                        <li class="filterButton" onclick="projectFilter('sass')" title="filtrer par Sass">
+                            <span>Sass</span>
+                        </li>
+    
+                        <li class="filterButton" onclick="projectFilter('php')" title="filtrer par Php">
+                            <span>Php</span>
+                        </li>
+    
+                        <li class="filterButton" onclick="projectFilter('react')" title="filtrer par React">
+                            <span>React</span>
+                        </li>
+    
+                        <p>
+                            affichage des projets, utiliser le filtre pour les classer par technologie utilisé
+                        </p>
+    
+                    </div>
+    
+    
+                </div>
+    
+            </header>
+    
+    
+            <h2 class="projectTitle">Projet perso</h2>
+
+            <div id="articleContainer">
+                <div v-for="project in projects">
+                    <div class="box" v-bind:class="project.technos">
+                        <div class="title">
+                            <h3>{{project.title}}</h3>
+                        </div>
+                        <div class="boxImage">
+                            <img v-bind:src="project.img" alt="image projet 1">
+                        </div>
+                        <div class="tags">
+                            <ul class="techno">
+                                <li v-for="techno in project.technos" class="project1">{{techno}}</li>
+                            </ul>
+                        </div>
+    
+                    </div>
+                </div>
+
+            </div>
+
+                <div>
+                    <h2 class="projectTitle">Projets professionnel/Formation</h2>
+                </div>
+    
+            <div id="articleContainer">
+
+
+                <div v-for="proProject in proProjects"  class="box html5 css javascript">
+                    <div class="title">
+                        <h3>{{proProject.title}}</h3>
+                    </div>
+                    <div class="boxImage">
+                        <img v-bind:src="proProject.img" alt="image projet 1">
+                    </div>
+                    <div class="tags">
+                        <ul class="techno">
+                            <li v-for="techno in proProject.technos" class="project1">{{techno}}</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+     
+                    <footer>
+                        <h3>Lorem, ipsum dolor</h3>
+                        <!-- <p>
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis, consequuntur.
+                        </p> -->
+                    </footer>
+      </div>
+        
+    </script>
+
+    <!-- <script type="text/x-template" id="portfolio">
+
+        <div id="headContainer">
+            
+            <div class="contactPage">
+
+                <header>
+                    <h1>Prendre Contact</h1>
+                    <p>
+                        Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant
+                        impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand
+                        un
+                        imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices
+                    </p>
+                </header>
+                <section>
+    
+    
+    
+    
+    
+                    <div class="form">
+                        <form method="text" action="/maPageDeContact">
+                            <p>
+                                <label for="ameliorer"><small>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                        Libero, placeat!</small> </label><br />
+                                <textarea name="ameliorer" id="ameliorer" rows="3" cols="80"> envoyer un message </textarea>
+                            <div class="button">
+                                <span>Suivant</span>
+                                <button>Envoyer Un Message</button>
+                            </div>
+    
+                            </p>
+                        </form>
+                    </div>
+                </section>
+    
+                <footer>
+    
+                    <div class="reseauxContact">
+                        <h3>Lorem ipsum dolor sit.</h3>
+    
+    
+                        <span>
+                            <a href="http://github.com"><img src="/medias/imagesPortfolio/github.png" alt="twitter"></a>
+                        </span>
+                        <span>
+                            <a href="http://linkedin.com"><img src="/medias/imagesPortfolio/linkedin.png"
+                                    alt="linkedin"></a>
+                        </span>
+                        <span>
+                            <a href="http://twitter.com"><img src="/medias/imagesPortfolio/twitter.png" alt="twitter"></a>
+                        </span>
+                        <span>
+                            <a href="http://facebook.com"><img src="/medias/imagesPortfolio/facebook.png"
+                                    alt="facebook"></a>
+                        </span>
+    
+                    </div>
+                </footer>
+            </div>
         </div>
-    </main>
+        
+    </script> -->
 
-   
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@2.0.0/dist/vue-router.js"></script>
     <script src="/node_modules/howler/dist/howler.js"></script>
-    <script src="script/JSspace-breaker.js"></script>
-    <script src="script/main.js"></script>
+    <script src="/script/vue.js"></script>
+    <script src="/script/main.js"></script>
+    <!-- <script src="script/JSspace-breaker.js"></script> -->
 </body>
 
 </html>
