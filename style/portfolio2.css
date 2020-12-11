@@ -135,6 +135,8 @@ h1,h2
     display: inline-block;
     margin: 15px;
     cursor: pointer;
+    z-index: 10px;
+    box-shadow: 8px 8px 0 rgba(0,0,0,.15);
     display: none;
 }
 /* .box{
@@ -176,6 +178,7 @@ h1,h2
 }
 
 #articleContainer .box .tags::after {
+    color: #8a8a8a;
     content: "more ..";
     display: block;
     position: absolute;
@@ -476,7 +479,7 @@ fleche de gauche */
 
 .arrowLeft:hover span::after
 {
-    transform:translateY(-16px) rotate(-55deg);
+    transform:translateY(-16px) rotate(-50deg);
 }
 
 .arrowLeft span:hover::before
@@ -831,7 +834,90 @@ a.btn.from-right{
 
 
 
+                    /* ------------------------------------------------------ */
 
+
+.presentationContainer
+{
+    width: 840px;
+    min-height: 198px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    font-size: 14px;
+
+}
+.animation
+{
+    position: relative;
+}
+
+.animation-box h2
+{
+    position: absolute;
+    top: 50%; left: 50%; 
+    transform: translate(-50%, -50%); 
+    text-decoration: none;
+    color: #FFF;
+    font-size: 25px;
+    opacity: 0;
+
+}
+
+.animation-box:hover h2
+{
+    transition: .5s ease-in-out;
+    opacity: 1;
+}
+
+.animation
+{
+    margin-top: 10%;
+}
+
+.animation img
+{
+    width: 100%;
+}
+
+.presentation, .presentation p
+{
+    margin-top: 3%;
+}
+.presentation a
+{
+    color: #8a8a8a;
+    text-transform: uppercase;
+    margin: auto;
+}
+
+.animation-box
+{
+    position: relative;
+    /* background: #24a84c; */
+    box-sizing: border-box;
+    display: inline-block;
+    margin: 15px;
+    cursor: pointer;
+    /* display: none; */
+    width: 100%;
+}
+
+.animation-title
+{
+    background-color:#ddd;
+}
+
+a
+{
+    color: #8a8a8a;
+}
+
+.presentation-footer p
+{
+    text-align: center;
+}
 
 
 

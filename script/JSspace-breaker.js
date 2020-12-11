@@ -419,7 +419,9 @@ function init(){ //reinitialise les paramètres du jeu
 
     let smallText = 'Je suis developpeur web en formation chez simplon.co.'.split(" ").join(String.fromCharCode(8202))
 
-    let smallTextLine2 = 'J\'apprend le Javascript,le php et la qualité projet'.split(" ").join(String.fromCharCode(8202))
+    // let smallTextLine2 = 'J\'apprend le Javascript,le php et la qualité projet'.split(" ").join(String.fromCharCode(8202))
+    let smallTextLine2 = 'Je suis à la recherche d\'un stage du 15 février au 9 avril'.split(" ").join(String.fromCharCode(8202))
+
 
     let smallTextLine3 = 'N\'hésitez pas à consulter mes derniers projets'.split(" ").join(String.fromCharCode(8202))
 
@@ -457,7 +459,7 @@ function init(){ //reinitialise les paramètres du jeu
     }
 
     for (let i = 0; i < smallTextLine2.length; i++){
-        let positionX = 75;
+        let positionX = 40;
         let positionY = 330;
 
         smallEnemies.push( (new SmallEnemy(smallTextLine2[i],positionX+i*13 ,positionY,ctx.measureText(smallTextLine2[i]).width)))
