@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/assets/style/portfolio2.css">
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/style/gameStyle.css">
+  <link rel="stylesheet" href="/assets/style/effect.css">
+
+  <!-- <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">  -->
+
+
+  <title>Contact</title>
+</head>
+
+<body id="headContainer">
+
+
+  <div class="arrowLeft" onclick="location.href='/views/portfolio.html'">
+    <a href="/views/portfolio.html">
+      <span></span>
+    </a>
+    <div class="textApparitionLeft">
+      <a href="/views/portfolio.html">portfolio</a>
+    </div>
+  </div>
+
+  <div class="burger">
+    <span></span>
+  </div>
+  <nav class="menu">
+    <a class="btn from-left" href="/views/index.html">A propos</a>
+    <a class="btn from-top" href="/views/portfolio.html">portfolio</a>
+    <a class="btn from-right" href="/views/contact.html">contact</a>
+  </nav>
+
+  <div class=overlay></div>
+
+  <div class="contactPage">
+
+    <header>
+      <h1>Prendre Contact</h1>
+      <p>
+        Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant
+        impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand
+        un
+        imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices
+      </p>
+    </header>
+
+
+    <!-- je récupère l'email de l'expéditeur dans l'object -->
+    <form id="form">
+      <input type="text" id="email" placeholder="Votre nom"><br>
+      <input type="email" id="subject" placeholder="Votre Email"><br>
+      <textarea name="text" id="text" cols="30" rows="10"></textarea><br>
+      <input type="submit" value="Envoyer">
+    </form>
+
+
+    <footer>
+
+      <div class="reseauxContact">
+        <h3>Lorem ipsum dolor sit.</h3>
+
+
+        <span>
+          <a href="http://github.com"><img src="/medias/imagesPortfolio/github.png" alt="twitter"></a>
+        </span>
+        <span>
+          <a href="http://linkedin.com"><img src="/medias/imagesPortfolio/linkedin.png" alt="linkedin"></a>
+        </span>
+        <span>
+          <a href="http://twitter.com"><img src="/medias/imagesPortfolio/twitter.png" alt="twitter"></a>
+        </span>
+        <span>
+          <a href="http://facebook.com"><img src="/medias/imagesPortfolio/facebook.png" alt="facebook"></a>
+        </span>
+
+      </div>
+    </footer>
+  </div>
+
+  <script src="/src/main.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <script>
+
+    let form = document.getElementById('form');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const email = document.getElementById('email').value.trim();
+      const subject = document.getElementById('subject').value.trim();
+      const text = document.getElementById('text').value.trim();
+
+      const data = {
+        email,
+        subject,
+        text
+      };
+
+      $.post("/email", data)
+        .then(() => {
+          window.location.href = "/email/sent";
+        })
+        .catch(() => {
+          window.location.href = "/error";
+        });
+
+    })
+
+
+
+  </script>
+
+</body>
+
+</html>

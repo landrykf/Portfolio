@@ -33,7 +33,7 @@ app.post('/email',(req, res)=> {
 //Page d'accueil
 
 app.get('/',(req, res)=> {
-    res.sendFile(path.join(__dirname,'views', 'index.html'));
+    res.sendFile(path.join(__dirname,'views', 'contact.html'));
 });
 
 // Page d'erreur
@@ -50,4 +50,4 @@ app.get('/email/sent', (req, res) => {
 
 app.listen(PORT,()=>{
     console.log('le server a démarer sur le PORT',8080)
-})
+}) 
