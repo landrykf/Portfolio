@@ -86,7 +86,7 @@ class Hero{
         this.post = function () {
 
             let img = new Image();
-            img.src = '/gameMedias/hero.png';
+            img.src = '/medias/gameMedias/hero.png';
             ctx.drawImage(img,this.x,this.y,this.width,this.height)       
         }
     
@@ -187,7 +187,7 @@ class Bullet{
                  ctx.fillRect(this.x,this.y,this.width,this.height);
              } else{
                 let img = new Image();
-                img.src = '/gameMedias/hero.png';
+                img.src = '/medias/gameMedias/hero.png';
                 ctx.drawImage(img,this.x,this.y,this.width,this.height)
              }
         }
