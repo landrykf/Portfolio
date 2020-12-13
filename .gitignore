@@ -1,3 +1,3 @@
 .env
 /node_modules
-/Express
+/public/node_modules

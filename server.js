@@ -1,9 +1,17 @@
 const express = require('express');
+
 const sendMail = require('./mail')
 const app = express();
 const path = require('path') 
 
+
+
+
 const PORT = 8080;
+
+app.use(express.static(__dirname + '/public'));
+// app.use(express.static('public'));
+
 
 // Data parsing
 
@@ -33,19 +41,19 @@ app.post('/email',(req, res)=> {
 //Page d'accueil
 
 app.get('/',(req, res)=> {
-    res.sendFile(path.join(__dirname,'views', 'contact.html'));
+    res.sendFile(path.join(__dirname,'/public/views', 'index.html'));
 });
 
 // Page d'erreur
 
 app.get('/error', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'error.html'));
+    res.sendFile(path.join(__dirname, '/public/views', 'error.html'));
 });
 
 // Confirmation d'envoie du mail
 
 app.get('/email/sent', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'emailMessage.html'));
+    res.sendFile(path.join(__dirname, '/public/views', 'emailMessage.html'));
 });
 
 app.listen(PORT,()=>{
