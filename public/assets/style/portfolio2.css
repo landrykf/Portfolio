@@ -179,7 +179,7 @@ h1,h2
 
 #articleContainer .box .tags::after {
     color: #8a8a8a;
-    content: "more ..";
+    content: "plus ..";
     display: block;
     position: absolute;
     bottom: 20px;
@@ -253,7 +253,7 @@ h1,h2
     position: relative;
 }
 
-.form span, button
+.form span, button, #submit-button
 {
     display:inline-block;
     padding: 10px 35px;
@@ -269,6 +269,8 @@ h1,h2
     font-size: 0.6em;
     font-weight: 700;
 }
+
+
 
 
 
@@ -333,7 +335,7 @@ h1,h2
     width: 36px;
     height: 35px;
     padding-top: 32px;
-    padding-right: 55px;
+    padding-right: 30px;
     background-color:transparent;
     display: block;
 }
@@ -553,11 +555,11 @@ fleche de gauche */
 .burger
 {
     position: fixed;
-    top: 10%;
+    /* top: 10%; */
     right: 10%;
     cursor: pointer;
     padding-top: 50px;
-    padding-right: 50px;
+    /* padding-right: 50px; */
     padding-bottom: 50px;
     width: 100px;
     height: 50px;
@@ -919,10 +921,146 @@ a
     text-align: center;
 }
 
+@media screen and (max-width: 1280px)
+{
 
+    #headContainer
+    {
+        width: auto;
+        margin-left: 3%;
+    }
 
+    #articleContainer
+    {
+        width: auto;
+        /* margin-left: 3%; */
+    }
+    .presentationContainer
+    {
+        width: 60%;
+    }
+    
+    .textApparition,.textApparitionLeft,.destroyButton
+    {
+        opacity: 0;
+    }
 
+    #myCanvas{
+        /* border: solid 1px blue;  */
+        width:80%;
+        margin-right: 15%;
+      }
+}
 
+@media screen and (max-width: 700px)
+{
+    #myCanvas{
+        /* border: solid 1px blue;  */
+        width:100%;
+        margin-right: 15%;
+      }
+    .reseauxIndex
+    {
+        flex-direction: row;
+        left: 0%;
+        top: 76%;
+    }
+    .arrowLeft,.arrowRight
+    {
+        display: none;
+    }
+
+    .burger
+    {
+        top: 74%;
+        left: 74%;
+        border-radius: 50% ;
+        background-color: #232323;
+        padding-top: 42px;
+        padding-bottom: 0px;
+        width: 80px;
+    }
+    .burger span 
+    {
+        left: 20%;
+    }
+}
+
+/* -------------------------------------------- */
+
+.form__group {
+    /* position: relative; */
+    padding: 15px 0 0;
+    margin-top: 10px;
+    width: 50%;
+    padding-left: 25%;
+    margin-top: 5%;
+  }
+  
+  .form__field {
+    font-family: inherit;
+    width: 100%;
+    border: 0;
+    border-bottom: 2px solid #9b9b9b;
+    outline: 0;
+    font-size: 1.3rem;
+    color: #fff;
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+  }
+  .form__field::placeholder {
+    /* color: transparent; */
+  }
+  .form__field:placeholder-shown ~ .form__label {
+    font-size: 1.3rem;
+    cursor: text;
+    top: 20px;
+  }
+/*   
+  .form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+    color: #9b9b9b;
+  } */
+  
+  .form__field:focus {
+    padding-bottom: 6px;
+    font-weight: 700;
+    border-width: 3px;
+    border-image: linear-gradient(to right, #11998e, #38ef7d);
+    border-image-slice: 1;
+  }
+  /* .form__field:focus ~ .form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+    color: #11998e;
+    font-weight: 700;
+  } */
+  
+  /* reset input */
+  .form__field:required, .form__field:invalid {
+    box-shadow: none;
+  }
+  
+  /* demo
+  body {
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-size: 1.5rem;
+    background-color: #222222;
+  } */
+  
 
 
 

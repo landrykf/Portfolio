@@ -45,21 +45,21 @@
     <header>
       <h1>Prendre Contact</h1>
       <p>
-        Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant
-        impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand
-        un
-        imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices
+        Bonjour, je suis a la recherche d'un stage du 15 février au 9 avril 2021 dans le but de valider ma formation de dévéloppeur web et web mobile ainsi qu'une alternance pour la rentrée prochaine. Merci de bien vouloir me contacter si vous avez des projets à me proposé ou alors des contacts à me sugérer
       </p>
     </header>
 
 
     <!-- je récupère l'email de l'expéditeur dans l'object -->
-    <form id="form">
-      <input type="text" id="email" placeholder="Votre nom"><br>
-      <input type="email" id="subject" placeholder="Votre Email"><br>
-      <textarea name="text" id="text" cols="30" rows="10"></textarea><br>
-      <input type="submit" value="Envoyer">
-    </form>
+    <div class="form__group field">
+      <form id="form">
+        <input class="form__field"  type="text" id="email" placeholder="Votre nom" autocomplete="off"><br>
+        <input class="form__field"  type="email" id="subject" placeholder="Votre Email" required autocomplete="off"><br>
+        <textarea class="form__field"  name="text" id="text" cols="30" rows="10"></textarea><br>
+        <input type="submit" value="Envoyer" id="submit-button">
+      </form>
+    </div>
+
 
 
     <footer>

@@ -415,7 +415,7 @@ function updateCountdown() {
 
 function init(){ //reinitialise les paramètres du jeu
 
-    let text = 'SALUT JE SUIS LANDRY KOFFI'.split(" ").join(String.fromCharCode(8202))
+    let text = 'SALUT, JE SUIS LANDRY KOFFI'.split(" ").join(String.fromCharCode(8202))
 
     let smallText = 'Je suis developpeur web en formation chez simplon.co.'.split(" ").join(String.fromCharCode(8202))
 
