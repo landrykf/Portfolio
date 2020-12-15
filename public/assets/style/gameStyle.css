@@ -19,6 +19,7 @@ canvas
 
 #scoreboard{
     position: fixed;
+    left: 18%;
 }
 
 #startScorboard{
