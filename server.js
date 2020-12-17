@@ -9,6 +9,15 @@ const path = require('path')
 
 // const PORT = 8080;
 http = require('http');
+
+//Production
+module.exports = {
+    env: {
+      EMAIL: process.env.EMAIL,
+      PASSWORD: process.env.PASSWORD,
+    }
+  };
+
 app.set('port', process.env.PORT || 3000);
 
 app.use(express.static(__dirname + '/public'));
