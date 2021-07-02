@@ -158,6 +158,14 @@ h1,h2
     transition: transform 1s;
 }
 
+.hero-button
+{ 
+    width: 27px;
+    position: absolute;
+    right: 6px;
+    top: 9px;
+}
+
 /* #articleContainer .box:hover .boxImage img
 {
     transform:scale(0.9);
@@ -179,7 +187,7 @@ h1,h2
 
 #articleContainer .box .tags::after {
     color: #8a8a8a;
-    content: "plus ..";
+    content: "détails...";
     display: block;
     position: absolute;
     bottom: 20px;
@@ -779,7 +787,7 @@ a.btn.from-right{
     font-weight: 700;
     transition: 1s ease-in-out;
 
-    animation: shake 1s cubic-bezier(.36, .07, .19, .97) both;
+    animation: shake 7s cubic-bezier(.36, .07, .19, .97) both;
     transform: translate3d(0, 0, 0);
     backface-visibility: hidden;
     perspective: 1000px;

@@ -417,10 +417,10 @@ function init(){ //reinitialise les paramètres du jeu
 
     let text = 'SALUT, JE SUIS LANDRY KOFFI'.split(" ").join(String.fromCharCode(8202))
 
-    let smallText = 'Je suis developpeur web en formation chez simplon.co.'.split(" ").join(String.fromCharCode(8202))
+    let smallText = 'développeur web titulaire d\'un titre RNCP de niveau 5.'.split(" ").join(String.fromCharCode(8202))
 
     // let smallTextLine2 = 'J\'apprend le Javascript,le php et la qualité projet'.split(" ").join(String.fromCharCode(8202))
-    let smallTextLine2 = 'Je suis à la recherche d\'un stage du 15 février au 9 avril'.split(" ").join(String.fromCharCode(8202))
+    let smallTextLine2 = 'Je suis à la recherche d\'une alternance pour valider une L3'.split(" ").join(String.fromCharCode(8202))
 
 
     let smallTextLine3 = 'N\'hésitez pas à consulter mes derniers projets'.split(" ").join(String.fromCharCode(8202))
